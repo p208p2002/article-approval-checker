@@ -23281,15 +23281,17 @@ var index = exports.index = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            _axios2.default.get(_setting.SERVER_URL + '/api/init').then(function (response) {
+            var uri = window.location.href;
+            var res = encodeURIComponent(uri);
+            console.log(res);
+
+            _axios2.default.get(_setting.SERVER_URL + '/api/init?articleurl=' + res).then(function (response) {
                 // console.log(response.data)
                 _this2.setState({
                     useful: response.data.isuseful,
                     notUseful: response.data.notuseful
                 });
             });
-
-            console.log(window.location.href);
         }
     }, {
         key: 'isUseful',
