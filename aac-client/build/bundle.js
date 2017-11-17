@@ -23283,7 +23283,7 @@ var index = exports.index = function (_React$Component) {
 
             var uri = window.location.href;
             var res = encodeURIComponent(uri);
-            console.log(res);
+            // console.log(res)
 
             _axios2.default.get(_setting.SERVER_URL + '/api/init?articleurl=' + res).then(function (response) {
                 // console.log(response.data)
@@ -23333,14 +23333,10 @@ var index = exports.index = function (_React$Component) {
                             width: '40', alt: 'is useful', onClick: this.isUseful }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
-                            'a',
-                            { href: '#', className: 'aac-text-success' },
-                            _react2.default.createElement(
-                                'p',
-                                { className: 'aac-text-success' },
-                                'YES : ',
-                                this.state.useful
-                            )
+                            'p',
+                            { className: 'aac-text-success' },
+                            'YES : ',
+                            this.state.useful
                         )
                     ),
                     _react2.default.createElement(
@@ -23350,14 +23346,10 @@ var index = exports.index = function (_React$Component) {
                             width: '40', alt: 'not useful', onClick: this.notUseful }),
                         _react2.default.createElement('br', null),
                         _react2.default.createElement(
-                            'a',
-                            { href: '#', className: 'aac-text-danger' },
-                            _react2.default.createElement(
-                                'p',
-                                { className: 'aac-text-danger' },
-                                'NO : ',
-                                this.state.notUseful
-                            )
+                            'p',
+                            { className: 'aac-text-danger' },
+                            'NO : ',
+                            this.state.notUseful
                         )
                     )
                 ),
