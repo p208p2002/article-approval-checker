@@ -19,7 +19,7 @@ export class index extends React.Component {
     componentDidMount(){
         var uri = window.location.href;
         var res = encodeURIComponent(uri);
-        console.log(res)
+        // console.log(res)
 
         axios.get(SERVER_URL+'/api/init?articleurl='+res).then((response)=>{
             // console.log(response.data)
@@ -28,8 +28,6 @@ export class index extends React.Component {
                 notUseful:response.data.notuseful
             })
         })
-
-        
 
     }
 
@@ -59,18 +57,14 @@ export class index extends React.Component {
                     <img src="https://p208p2002.github.io/article-approval-checker/aac-client/src/checked.png" 
                         width="40" alt="is useful" onClick={this.isUseful} />
                     <br/>
-                    <a href="#" className="aac-text-success">
-                    <p className="aac-text-success">YES : {this.state.useful}</p>
-                    </a>
+                    <p className="aac-text-success">YES : {this.state.useful}</p>                    
                 </div>
 
                 <div className="aac-col-1 aac-text-center acc-center">
                     <img src="https://p208p2002.github.io/article-approval-checker/aac-client/src/unchecked.png" 
                         width="40" alt="not useful" onClick={this.notUseful}/>
-                    <br/>
-                    <a href="#" className="aac-text-danger">
+                    <br/>                    
                     <p className="aac-text-danger">NO : {this.state.notUseful}</p>
-                    </a>
                 </div>
                 </div>
 
