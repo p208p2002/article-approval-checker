@@ -17,8 +17,11 @@ export class index extends React.Component {
     }
 
     componentDidMount(){
+        var uri = window.location.href;
+        var res = encodeURIComponent(uri);
+        console.log(res)
 
-        axios.get(SERVER_URL+'/api/init').then((response)=>{
+        axios.get(SERVER_URL+'/api/init?articleurl='+res).then((response)=>{
             // console.log(response.data)
             this.setState({
                 useful:response.data.isuseful,
@@ -26,7 +29,7 @@ export class index extends React.Component {
             })
         })
 
-        console.log(window.location.href)
+        
 
     }
 
