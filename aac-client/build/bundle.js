@@ -23288,6 +23288,8 @@ var index = exports.index = function (_React$Component) {
                     notUseful: response.data.notuseful
                 });
             });
+
+            console.log(window.location.href);
         }
     }, {
         key: 'isUseful',

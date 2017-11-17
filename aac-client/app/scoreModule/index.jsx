@@ -26,6 +26,8 @@ export class index extends React.Component {
             })
         })
 
+        console.log(window.location.href)
+
     }
 
     isUseful(){
