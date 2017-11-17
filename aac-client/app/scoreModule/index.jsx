@@ -17,16 +17,16 @@ export class index extends React.Component {
     }
 
     componentDidMount(){
-        axios({
-            method:'post',
-            url: SERVER_URL+'/api/init'
-        }).then(function(response){
-            console.log(response.data)
+
+        axios.get(SERVER_URL+'/api/init').then((response)=>{
+            // console.log(response.data)
+            this.setState({
+                useful:response.data.isuseful,
+                notUseful:response.data.notuseful
+            })
         })
 
-        //setstate
     }
-    
 
     isUseful(){
         let useful = this.state.useful
@@ -51,7 +51,7 @@ export class index extends React.Component {
                 <h3 className="aac-title aac-text-center">Useful Article?</h3>
                 <div className="aac-row">
                 <div className="aac-col-1 aac-text-center acc-center">
-                    <img src="https://p208p2002.github.io/article-approval-checker/src/checked.png" 
+                    <img src="https://p208p2002.github.io/article-approval-checker/aac-client/src/checked.png" 
                         width="40" alt="is useful" onClick={this.isUseful} />
                     <br/>
                     <a href="#" className="aac-text-success">
@@ -60,7 +60,7 @@ export class index extends React.Component {
                 </div>
 
                 <div className="aac-col-1 aac-text-center acc-center">
-                    <img src="https://p208p2002.github.io/article-approval-checker/src/unchecked.png" 
+                    <img src="https://p208p2002.github.io/article-approval-checker/aac-client/src/unchecked.png" 
                         width="40" alt="not useful" onClick={this.notUseful}/>
                     <br/>
                     <a href="#" className="aac-text-danger">
