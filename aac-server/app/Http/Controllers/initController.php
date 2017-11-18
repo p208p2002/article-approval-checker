@@ -9,10 +9,10 @@ use App\Http\Requests;
 class initController extends Controller
 {
     public function init(Request $request){
-        $http_referer = $request->server('HTTP_REFERER');
+        // $http_referer = $request->server('HTTP_REFERER');
+        $http_referer=$request->articleurl;
         $result=DB::table('articlerecord')->where('articleurl',$http_referer)->first();
-        // $result=DB::table('articlerecord')->where('id',1)->first();
-        // dd($result->id);
+        
         
         if($result == null){//沒有紀錄，判定為新加入之文章
             DB::table('articlerecord')->insert(

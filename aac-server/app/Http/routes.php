@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index');
 
 //api
 Route::group(['prefix' => 'api', 'middleware' => 'cors'],function(){
-    Route::get('/init','initController@init');
-    Route::post('/init','initController@init');
+    //?articleurl=
+    Route::get('/init','initController@init'); 
+    Route::get('/vote/useful','voteController@useful');
+    Route::get('/vote/notuseful','voteController@notuseful');
 });
