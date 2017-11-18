@@ -9,12 +9,14 @@ export class index extends React.Component {
         this.isUseful=this.isUseful.bind(this)
         this.notUseful=this.notUseful.bind(this)
         this.getVote=this.getVote.bind(this)
+        this.lockVote=this.lockVote.bind(this)
 
         this.state={
             useful : 0,
-            notUseful : 0   
+            notUseful : 0,
+            votelock : 0,
+            message : 'thecodingday.com'
         }
-
     }
 
     componentDidMount(){
@@ -35,18 +37,48 @@ export class index extends React.Component {
         })
     }
 
+    lockVote(){
+        this.setState({
+            votelock : 1,
+            message : 'thanks for vote ^^'
+        })
+
+        setTimeout(
+            ()=>{
+                this.setState({
+                    message : 'thecodingday.com'
+                })
+            },2000)
+    }
+
     isUseful(){
-        var uri = window.location.href;
-        var res = encodeURIComponent(uri);
-        axios.get(SERVER_URL+'/api/vote/useful?articleurl='+res);
-        this.getVote();
+        if(this.state.votelock==0){
+            var uri = window.location.href;
+            var res = encodeURIComponent(uri);
+            axios.get(SERVER_URL+'/api/vote/useful?articleurl='+res);
+            this.lockVote();
+
+            var useful = this.state.useful
+            useful++ 
+            this.setState({
+                useful:useful
+            })
+        }
     }
 
     notUseful(){
-        var uri = window.location.href;
-        var res = encodeURIComponent(uri);
-        axios.get(SERVER_URL+'/api/vote/notuseful?articleurl='+res);
-        this.getVote();
+        if(this.state.votelock==0){
+            var uri = window.location.href;
+            var res = encodeURIComponent(uri);
+            axios.get(SERVER_URL+'/api/vote/notuseful?articleurl='+res);
+            this.lockVote();
+
+            var notUseful = this.state.notUseful
+            notUseful++ 
+            this.setState({
+                notUseful:notUseful
+            })
+        }
     }
 
     render() { 
@@ -71,7 +103,7 @@ export class index extends React.Component {
                 </div>
 
                 <div className="aac-text-center">
-                    <h3 className="aac-text-secondary">thecodingday.com</h3>
+                    <h3 className="aac-text-secondary">{this.state.message}</h3>
                 </div>
             </div>
         )

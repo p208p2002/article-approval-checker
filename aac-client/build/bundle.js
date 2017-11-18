@@ -23268,12 +23268,14 @@ var index = exports.index = function (_React$Component) {
         _this.isUseful = _this.isUseful.bind(_this);
         _this.notUseful = _this.notUseful.bind(_this);
         _this.getVote = _this.getVote.bind(_this);
+        _this.lockVote = _this.lockVote.bind(_this);
 
         _this.state = {
             useful: 0,
-            notUseful: 0
+            notUseful: 0,
+            votelock: 0,
+            message: 'thecodingday.com'
         };
-
         return _this;
     }
 
@@ -23300,20 +23302,52 @@ var index = exports.index = function (_React$Component) {
             });
         }
     }, {
+        key: 'lockVote',
+        value: function lockVote() {
+            var _this3 = this;
+
+            this.setState({
+                votelock: 1,
+                message: 'thanks for vote ^^'
+            });
+
+            setTimeout(function () {
+                _this3.setState({
+                    message: 'thecodingday.com'
+                });
+            }, 2000);
+        }
+    }, {
         key: 'isUseful',
         value: function isUseful() {
-            var uri = window.location.href;
-            var res = encodeURIComponent(uri);
-            _axios2.default.get(_setting.SERVER_URL + '/api/vote/useful?articleurl=' + res);
-            this.getVote();
+            if (this.state.votelock == 0) {
+                var uri = window.location.href;
+                var res = encodeURIComponent(uri);
+                _axios2.default.get(_setting.SERVER_URL + '/api/vote/useful?articleurl=' + res);
+                this.lockVote();
+
+                var useful = this.state.useful;
+                useful++;
+                this.setState({
+                    useful: useful
+                });
+            }
         }
     }, {
         key: 'notUseful',
         value: function notUseful() {
-            var uri = window.location.href;
-            var res = encodeURIComponent(uri);
-            _axios2.default.get(_setting.SERVER_URL + '/api/vote/notuseful?articleurl=' + res);
-            this.getVote();
+            if (this.state.votelock == 0) {
+                var uri = window.location.href;
+                var res = encodeURIComponent(uri);
+                _axios2.default.get(_setting.SERVER_URL + '/api/vote/notuseful?articleurl=' + res);
+                this.lockVote();
+
+                var notUseful = this.state.notUseful;
+                notUseful++;
+                this.setState({
+                    notUseful: notUseful
+                });
+            }
         }
     }, {
         key: 'render',
@@ -23363,7 +23397,7 @@ var index = exports.index = function (_React$Component) {
                     _react2.default.createElement(
                         'h3',
                         { className: 'aac-text-secondary' },
-                        'thecodingday.com'
+                        this.state.message
                     )
                 )
             );
