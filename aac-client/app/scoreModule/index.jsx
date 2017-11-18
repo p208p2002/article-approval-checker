@@ -8,6 +8,7 @@ export class index extends React.Component {
         super(props)
         this.isUseful=this.isUseful.bind(this)
         this.notUseful=this.notUseful.bind(this)
+        this.getVote=this.getVote.bind(this)
 
         this.state={
             useful : 0,
@@ -17,6 +18,10 @@ export class index extends React.Component {
     }
 
     componentDidMount(){
+       this.getVote()
+    }
+
+    getVote(){
         var uri = window.location.href;
         var res = encodeURIComponent(uri);
         // console.log(res)
@@ -28,23 +33,20 @@ export class index extends React.Component {
                 notUseful:response.data.notuseful
             })
         })
-
     }
 
     isUseful(){
-        let useful = this.state.useful
-        useful++
-        this.setState({
-            useful : useful
-        })
+        var uri = window.location.href;
+        var res = encodeURIComponent(uri);
+        axios.get(SERVER_URL+'/api/vote/useful?articleurl='+res);
+        this.getVote();
     }
 
     notUseful(){
-        let notUseful = this.state.notUseful
-        notUseful++
-        this.setState({
-            notUseful : notUseful
-        })
+        var uri = window.location.href;
+        var res = encodeURIComponent(uri);
+        axios.get(SERVER_URL+'/api/vote/notuseful?articleurl='+res);
+        this.getVote();
     }
 
     render() { 

@@ -23267,6 +23267,7 @@ var index = exports.index = function (_React$Component) {
 
         _this.isUseful = _this.isUseful.bind(_this);
         _this.notUseful = _this.notUseful.bind(_this);
+        _this.getVote = _this.getVote.bind(_this);
 
         _this.state = {
             useful: 0,
@@ -23279,6 +23280,11 @@ var index = exports.index = function (_React$Component) {
     _createClass(index, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            this.getVote();
+        }
+    }, {
+        key: 'getVote',
+        value: function getVote() {
             var _this2 = this;
 
             var uri = window.location.href;
@@ -23296,20 +23302,18 @@ var index = exports.index = function (_React$Component) {
     }, {
         key: 'isUseful',
         value: function isUseful() {
-            var useful = this.state.useful;
-            useful++;
-            this.setState({
-                useful: useful
-            });
+            var uri = window.location.href;
+            var res = encodeURIComponent(uri);
+            _axios2.default.get(_setting.SERVER_URL + '/api/vote/useful?articleurl=' + res);
+            this.getVote();
         }
     }, {
         key: 'notUseful',
         value: function notUseful() {
-            var notUseful = this.state.notUseful;
-            notUseful++;
-            this.setState({
-                notUseful: notUseful
-            });
+            var uri = window.location.href;
+            var res = encodeURIComponent(uri);
+            _axios2.default.get(_setting.SERVER_URL + '/api/vote/notuseful?articleurl=' + res);
+            this.getVote();
         }
     }, {
         key: 'render',
