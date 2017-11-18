@@ -1,6 +1,7 @@
 # Article approval checker(AAC)
 AAC is a vote system for evaluation a article is good or not; it's a simple vote system build up with AAC-server and AAC-client
 
+[demo on github(only UI)](https://p208p2002.github.io/article-approval-checker/aac-client/build/)
 #  AAC-server 
 Develop by Laravel 5.2 (require PHP 5.5.9)
 
