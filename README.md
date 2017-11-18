@@ -19,6 +19,7 @@ $ cp .env.example .env
 $ php artisan k:g
 $ php artisan migrate
 ```
+> You must set .env file with database info before `$ php artisan migrate`
 
 ## Use AAC-client
 > Need install "npm" first
