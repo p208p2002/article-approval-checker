@@ -3,10 +3,10 @@ AAC is a embedded vote system for evaluation a article(on web site) is good or n
 
 [demo on github(only UI)](https://p208p2002.github.io/article-approval-checker/aac-client/build/)
 #  AAC-server 
-Develop by Laravel 5.2 (require PHP 5.5.9)
+Develop with Laravel 5.2 (require PHP 5.5.9)
 
 # AAC-client
-Develop by React 15.6
+Develop with React 15.6
 
 # How to use
 Although I want to set a server for free with it, but I don't have to much resource and for some security reason, so you need to set your own server for it.
