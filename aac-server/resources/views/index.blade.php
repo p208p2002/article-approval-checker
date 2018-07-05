@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-12 col-md url-text">
                     <b class="row-title d-inline d-md-none">Url:</b>
-                    <a href={{ $vote->articleurl }}>{{ $vote->articleurl }}</a>
+                    <a href={{ $vote->articleurl }} target="_blank">{{ $vote->articleurl }}</a>
                 </div>
                 <div class="col-12 col-md">
                     <b class="row-title d-inline d-md-none">Postive rate</b>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-12 col-md url-text">
                     <b class="row-title d-inline d-md-none">Url:</b>
-                    <a href={{ $vote->articleurl }}>{{ $vote->articleurl }}</a>
+                    <a href={{ $vote->articleurl }} target="_blank">{{ $vote->articleurl }}</a>
                 </div>
                 <div class="col-12 col-md">
                     <b class="row-title d-inline d-md-none">Postive rate</b>
