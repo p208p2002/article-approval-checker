@@ -24353,7 +24353,7 @@ module.exports = function spread(callback) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var SERVER_URL = exports.SERVER_URL = 'http://178.128.89.37/article-approval-checker/aac-server/public/';
+var SERVER_URL = exports.SERVER_URL = 'https://aac.thecodingday.com/';
 // export const SERVER_URL = 'http://localhost/article-approval-checker/aac-server/public'
 
 /***/ })
