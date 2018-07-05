@@ -15,7 +15,8 @@ export class index extends React.Component {
             useful : 0,
             notUseful : 0,
             votelock : 0,
-            message : 'thecodingday.com'
+            message : 'Loading...',
+            loading:true
         }
     }
 
@@ -32,7 +33,9 @@ export class index extends React.Component {
             // console.log(response.data)
             this.setState({
                 useful:response.data.isuseful,
-                notUseful:response.data.notuseful
+                notUseful:response.data.notuseful,
+                message : 'thecodingday.com',
+                loading:false
             })
         })
     }
@@ -82,7 +85,7 @@ export class index extends React.Component {
     }
 
     render() { 
-
+        let {loading,message} = this.state;
         return (
             <div className="acc-border">
                 <h3 className="aac-title aac-text-center">Useful Article?</h3>
@@ -103,7 +106,7 @@ export class index extends React.Component {
                 </div>
 
                 <div className="aac-text-center">
-                    <h3 className="aac-text-secondary">{this.state.message}</h3>
+                    <h3 className="aac-text-secondary">{message}</h3>
                 </div>
             </div>
         )

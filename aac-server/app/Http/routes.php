@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,7 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // $mostApprovals = DB::select("SELECT * FROM articlerecord LIMIT 20");
+    $mostVoteds = DB::select("SELECT *,SUM(isuseful+notuseful) as total from articlerecord GROUP BY id ORDER BY total DESC LIMIT 10");
+    $newVotes = DB::select("SELECT * from articlerecord ORDER by id DESC LIMIT 10");
+    return view('index',['mostVoteds'=>$mostVoteds,'newVotes'=>$newVotes]);
+});
+
+Route::post('/search',function(Request $request){
+    $searchText=($request->input('searchText'));
+    $results = DB::table('articlerecord')->where('articleurl',$searchText)->get();
+    return view('searchView',['results'=>$results]);
 });
 
 Route::auth();
