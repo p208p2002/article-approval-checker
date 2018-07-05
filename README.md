@@ -11,14 +11,14 @@ Go to release tag and download the latest version, then simply import in your we
 ```
 <script src="aacvote_vx.x.js"></script>
 ```
-- file name `vx.x` will be the version
+> file name `vx.x` will be the version
 
 and add the html element to dispaly it
 
 ```
 <div id="advancetool"></div>
 ```
-- `<div id="advancetool"></div>` must above `<script src="aacvote_vx.x.js"></script>`
+> `<div id="advancetool"></div>` must above `<script src="aacvote_vx.x.js"></script>`
 
 
 
