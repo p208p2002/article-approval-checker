@@ -14,7 +14,8 @@
         <div>
         AAC is a system can help you to judge article on the internet, 
         just one click to join the vote,
-        with the vote result we can help people to find out the good article and save time to solve their problem!
+        with the vote result we can help people to find out the good article and save time to solve their problem!        
+        And also see <a href="https://github.com/p208p2002/article-approval-checker">this project</a> on github:D
         </div>
         <br>
         <form action={{url('/search')}} method="post">
@@ -24,24 +25,33 @@
         </form>
         <br>        
         <h3>Top 10 popular vote</h3>
-        <div class="row text-left row-title">
-            <div class="col-1">Rank</div>
-            <div class="col">Article url</div>
-            <div class="col">Postive rate</div>
-            <div class="col">Argee</div>
-            <div class="col">Disagee</div>
-            <div class="col">Join date</div>
+        <div class="row text-left row-title d-none d-md-flex">
+            <div class="col-md-1">Rank</div>
+            <div class="col-md">Article url</div>
+            <div class="col-md">Postive rate</div>
+            <div class="col-md">Argee</div>
+            <div class="col-md">Disagee</div>
+            <div class="col-md">Join date</div>
         </div>
+        
+        <!-- <div class="text d-block d-md-none">111</div> -->
 
         <?php $index=1; ?>
-            @foreach($mostVoteds as $mostVoted)
+            @foreach($mostVoteds as $vote)
             <div class="row text-left">
-                <div class="col-1">{{ $index }}</div>
-                <div class="col url-text"><a href={{ $mostVoted->articleurl }}>{{ $mostVoted->articleurl }}</a></div>
-                <div class="col">
+                <div class="col-12 col-md-1">                    
+                    <b class="row-title d-inline d-md-none">Rank:</b>
+                    {{ $index }}
+                </div>
+                <div class="col-12 col-md url-text">
+                    <b class="row-title d-inline d-md-none">Url:</b>
+                    <a href={{ $vote->articleurl }}>{{ $vote->articleurl }}</a>
+                </div>
+                <div class="col-12 col-md">
+                    <b class="row-title d-inline d-md-none">Postive rate</b>
                     <?php 
-                        $isuseful=$mostVoted->isuseful;
-                        $notuseful=$mostVoted->notuseful;
+                        $isuseful=$vote->isuseful;
+                        $notuseful=$vote->notuseful;
                         if($isuseful == 0 & $notuseful ==0 || $isuseful==0){
                             echo '0.00';
                         }
@@ -50,9 +60,11 @@
                         }
                     ?>
                 </div>
-                <div class="col">{{ $mostVoted->isuseful }}</div>
-                <div class="col">{{ $mostVoted->notuseful }}</div>
-                <div class="col">{{$mostVoted->added_on}}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->isuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->notuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{$vote->added_on}}</div>
+
+                <div class="block d-block d-md-none">&nbsp;</div>
             </div>
             <?php $index++; ?>
             @endforeach  
@@ -60,24 +72,31 @@
         <hr>
         
         <h3>New votes</h3>
-        <div class="row text-left row-title">
-            <div class="col-1">Rank</div>
-            <div class="col">Article url</div>
-            <div class="col">Postive rate</div>
-            <div class="col">Argee</div>
-            <div class="col">Disagee</div>
-            <div class="col">Join date</div>
+        <div class="row text-left row-title d-none d-md-flex">
+            <div class="col-md-1">Rank</div>
+            <div class="col-md">Article url</div>
+            <div class="col-md">Postive rate</div>
+            <div class="col-md">Argee</div>
+            <div class="col-md">Disagee</div>
+            <div class="col-md">Join date</div>
         </div>
 
         <?php $index=1; ?>
-            @foreach($newVotes as $newVote)
+            @foreach($newVotes as $vote)
             <div class="row text-left">
-                <div class="col-1">{{ $index }}</div>
-                <div class="col url-text"><a href={{ $newVote->articleurl }}>{{ $newVote->articleurl }}</a></div>
-                <div class="col">
+                <div class="col-12 col-md-1">                    
+                    <b class="row-title d-inline d-md-none">Rank:</b>
+                    {{ $index }}
+                </div>
+                <div class="col-12 col-md url-text">
+                    <b class="row-title d-inline d-md-none">Url:</b>
+                    <a href={{ $vote->articleurl }}>{{ $vote->articleurl }}</a>
+                </div>
+                <div class="col-12 col-md">
+                    <b class="row-title d-inline d-md-none">Postive rate</b>
                     <?php 
-                        $isuseful=$newVote->isuseful;
-                        $notuseful=$newVote->notuseful;
+                        $isuseful=$vote->isuseful;
+                        $notuseful=$vote->notuseful;
                         if($isuseful == 0 & $notuseful ==0 || $isuseful==0){
                             echo '0.00';
                         }
@@ -86,16 +105,18 @@
                         }
                     ?>
                 </div>
-                <div class="col">{{ $newVote->isuseful }}</div>
-                <div class="col">{{ $newVote->notuseful }}</div>
-                <div class="col">{{$newVote->added_on}}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->isuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->notuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{$vote->added_on}}</div>
+
+                <div class="block d-block d-md-none">&nbsp;</div>
             </div>
             <?php $index++; ?>
             @endforeach  
     </div>    
-    <footer class="text-center">
+    <!-- <footer class="text-center">
         <hr>
         2018 Philip Huang
-    </footer>
+    </footer> -->
 </body>
 </html>

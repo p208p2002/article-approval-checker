@@ -19,7 +19,7 @@
             <button type="submit">search</button>        
         </form>
         <hr>
-        <div class="row text-left row-title">
+        <div class="row text-left row-title d-none d-md-flex">
             <div class="col-1">Rank</div>
             <div class="col">Article url</div>
             <div class="col">Postive rate</div>
@@ -28,14 +28,21 @@
             <div class="col">Join date</div>
         </div>
         <?php $index=1; ?>
-            @foreach($results as $result)
+            @foreach($results as $vote)
             <div class="row text-left">
-                <div class="col-1">{{ $index }}</div>
-                <div class="col url-text"><a href={{ $result->articleurl }}>{{ $result->articleurl }}</a></div>
-                <div class="col">
+                <div class="col-12 col-md-1">                    
+                    <b class="row-title d-inline d-md-none">Rank:</b>
+                    {{ $index }}
+                </div>
+                <div class="col-12 col-md url-text">
+                    <b class="row-title d-inline d-md-none">Url:</b>
+                    <a href={{ $vote->articleurl }}>{{ $vote->articleurl }}</a>
+                </div>
+                <div class="col-12 col-md">
+                    <b class="row-title d-inline d-md-none">Postive rate</b>
                     <?php 
-                        $isuseful=$result->isuseful;
-                        $notuseful=$result->notuseful;
+                        $isuseful=$vote->isuseful;
+                        $notuseful=$vote->notuseful;
                         if($isuseful == 0 & $notuseful ==0 || $isuseful==0){
                             echo '0.00';
                         }
@@ -44,16 +51,18 @@
                         }
                     ?>
                 </div>
-                <div class="col">{{ $result->isuseful }}</div>
-                <div class="col">{{ $result->notuseful }}</div>
-                <div class="col">{{$result->added_on}}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->isuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{ $vote->notuseful }}</div>
+                <div class="col-12 col-md d-none d-md-flex">{{$vote->added_on}}</div>
+
+                <div class="block d-block d-md-none">&nbsp;</div>
             </div>
             <?php $index++; ?>
             @endforeach  
     </div>
-    <footer class="text-center">
+    <!-- <footer class="text-center">
         <hr>
         2018 Philip Huang
-    </footer>
+    </footer> -->
 </body>
 </html>
