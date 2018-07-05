@@ -5,50 +5,20 @@ AAC is a embedded vote system for evaluation a article(on web site) is good or n
 
 [AAC website](https://aac.thecodingday.com/)
 
-#  AAC-server 
-Develop with Laravel 5.2 (require PHP 5.5.9)
-
-# AAC-client
-Develop with React 15.6
-
 # How to use
-Although I want to set a server for free with it, but I don't have to much resource and for some security reason, so you need to set your own server for it.
-
-## Deploy AAC-server
-> PHP environment and Composer is require
-```
-$ composer install
-$ cp .env.example .env
-$ php artisan k:g
-$ php artisan migrate
-```
-> You must set .env file with database info before `$ php artisan migrate`
-
-## Use AAC-client
-> Need install "npm" first
-```
-$ npm install
-```
-setting the **server url** at `aac-client/app/setting.js` 
-
-then compile with webpack
-```
-$ webpack
-```
-
-compiled file will  at `/aac-client/build` and named "bundle.js"
-
-simply import in your web site 
+Go to release tag and download the latest version, then simply import in your web site or article.
 
 ```
-<script src="bundle.js"></script>
+<script src="aacvote_vx.x.js"></script>
 ```
+- file name `vx.x` will be the version
 
 and add the html element to dispaly it
 
 ```
 <div id="advancetool"></div>
 ```
+- `<div id="advancetool"></div>` must above `<script src="aacvote_vx.x.js"></script>`
 
 
 
