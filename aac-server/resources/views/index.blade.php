@@ -71,7 +71,7 @@
                         
         <hr>
         
-        <h3>New votes</h3>
+        <h3>New vote</h3>
         <div class="row text-left row-title d-none d-md-flex">
             <div class="col-md-1">Rank</div>
             <div class="col-md">Article url</div>
